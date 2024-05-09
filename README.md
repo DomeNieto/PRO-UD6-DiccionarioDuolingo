@@ -1,18 +1,10 @@
-# PRO-UD6-DiccionarioDuolingo
+# DiccionarioDuolingo
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+_**DiccionarioDuolingo**, es un proyecto diseñado para facilitar la gestión de un diccionario de palabras en un entorno de aplicación de consola. La necesidad de este proyecto surge de la importancia de tener una herramienta eficiente para almacenar, buscar, agregar y eliminar palabras en un diccionario, especialmente en contextos educativos._
 
-## Folder Structure
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![image](image.png)
 
-The workspace contains two folders by default, where:
+**Autor del proyecto:** Doménica Alejandra Nieto León 
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+---
+- Encuentra el _**Manual de Programa**_ [<<**aquí**>>](docs/MANUAL_PROGRAMA.md) 
