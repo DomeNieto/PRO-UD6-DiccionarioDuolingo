@@ -11,10 +11,9 @@ import org.empresa.duolingo.util.Validador;
 public class Diccionario {
 
     private Map<String, Set<String>> diccionario = new HashMap<>();
+    Scanner sc = new Scanner(System.in);
 
     public void agregarPalabra(String palabra) {
-
-        Scanner sc = new Scanner(System.in);
 
         while (true) {
             if (Validador.validarPalabra(palabra)) {
@@ -42,7 +41,37 @@ public class Diccionario {
             System.out.println("Palabra agregada exitosamente.");
         }
 
-        sc.close();
     }
 
+    public void eliminarPalabra() {
+
+        System.out.println("Las palabras que tiene almacenadas son:");
+        for (Set<String> palabras : diccionario.values()) {
+            for (String palabra : palabras) {
+                System.out.println(palabra);
+            }
+        }
+
+        System.out.println("Ingrese la palabra que desea eliminar.");
+        String palabraEliminar = sc.nextLine();
+
+        Validador.validarPalabra(palabraEliminar);
+
+        String letra = Validador.palabraDividida(palabraEliminar);
+
+        if (this.diccionario.containsKey(letra)) {
+            Set<String> setPalabras = this.diccionario.get(letra);
+            if (setPalabras.remove(palabraEliminar)) {
+                System.out.println("La palabra " + palabraEliminar +
+                        " eliminada exitosamente.");
+            } else {
+                System.out.println("La palabra " + palabraEliminar +
+                        " no está en el diccionario.");
+            }
+        } else {
+            System.out.println("La palabra " + palabraEliminar +
+                    " no se encuentra almacenada en el diccionario.");
+        }
+
+    }
 }
