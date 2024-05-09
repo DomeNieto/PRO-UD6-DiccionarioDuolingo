@@ -114,4 +114,24 @@ public class Diccionario {
         }
 
     }
+
+    public void mostrarPalabrasPorInicial(String inicial) {
+
+        String letra = inicial.toLowerCase();
+        Set<String> setPalabras = diccionario.get(letra);
+
+        try {
+            if (!setPalabras.isEmpty()) {
+                System.out.println("Las palabras que comienzan con la inicial " + inicial + " son:");
+                for (String palabra : setPalabras) {
+                    System.out.println(palabra);
+                }
+            } else {
+                System.out.println("No hay palabras almacenadas que comiencen con la inicial " + inicial);
+            }
+        } catch (NullPointerException e) {
+            System.out.println("La inicial " + inicial + " no existe en el diccionario.");
+        }
+
+    }
 }
