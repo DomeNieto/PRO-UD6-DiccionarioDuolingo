@@ -95,4 +95,23 @@ public class Diccionario {
         }
 
     }
+
+    public void mostrarInicialesDisponibles() {
+        boolean hayLetras = false;
+
+        System.out.println("Iniciales disponibles en el diccionario:");
+
+        for (String letra : diccionario.keySet()) {
+            Set<String> setPalabras = diccionario.get(letra);
+            if (setPalabras != null && !setPalabras.isEmpty()) {
+                System.out.println(letra);
+                hayLetras = true;
+            }
+        }
+
+        if (!hayLetras) {
+            System.out.println("No hay iniciales disponibles en el diccionario.");
+        }
+
+    }
 }
