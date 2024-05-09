@@ -74,4 +74,25 @@ public class Diccionario {
         }
 
     }
+
+    public void buscarPalabra(String palabraBuscar) {
+
+        Validador.validarPalabra(palabraBuscar);
+        String letra = Validador.palabraDividida(palabraBuscar);
+
+        if (this.diccionario.containsKey(letra)) {
+            Set<String> setPalabras = this.diccionario.get(letra);
+            if (setPalabras.contains(palabraBuscar)) {
+                System.out.println("La palabra " + palabraBuscar +
+                        ", está en el diccionario.");
+            } else {
+                System.out.println("La palabra " + palabraBuscar +
+                        ", no está en el diccionario.");
+            }
+        } else {
+            System.out.println("La palabra " + palabraBuscar +
+                    ", no está en el diccionario.");
+        }
+
+    }
 }
