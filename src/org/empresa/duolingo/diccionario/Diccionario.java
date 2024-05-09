@@ -1,0 +1,137 @@
+package org.empresa.duolingo.diccionario;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+
+import org.empresa.duolingo.util.Validador;
+
+public class Diccionario {
+
+    private Map<String, Set<String>> diccionario = new HashMap<>();
+    Scanner sc = new Scanner(System.in);
+
+    public void agregarPalabra(String palabra) {
+
+        while (true) {
+            if (Validador.validarPalabra(palabra)) {
+                System.out.println("Ingrese la palabra que desea agregar:");
+                palabra = sc.nextLine();
+            } else {
+                break;
+            }
+        }
+
+        String letra = Validador.palabraDividida(palabra);
+
+        if (this.diccionario.containsKey(letra)) {
+            Set<String> setPalabras = this.diccionario.get(letra);
+            if (setPalabras.contains(palabra)) {
+                System.out.println("La palabra ya existe en el diccionario.");
+            } else {
+                setPalabras.add(palabra);
+                System.out.println("Palabra agregada exitosamente.");
+            }
+        } else {
+            Set<String> nuevoSet = new HashSet<>();
+            nuevoSet.add(palabra);
+            this.diccionario.put(letra, nuevoSet);
+            System.out.println("Palabra agregada exitosamente.");
+        }
+
+    }
+
+    public void eliminarPalabra() {
+
+        System.out.println("Las palabras que tiene almacenadas son:");
+        for (Set<String> palabras : diccionario.values()) {
+            for (String palabra : palabras) {
+                System.out.println(palabra);
+            }
+        }
+
+        System.out.println("Ingrese la palabra que desea eliminar.");
+        String palabraEliminar = sc.nextLine();
+
+        Validador.validarPalabra(palabraEliminar);
+
+        String letra = Validador.palabraDividida(palabraEliminar);
+
+        if (this.diccionario.containsKey(letra)) {
+            Set<String> setPalabras = this.diccionario.get(letra);
+            if (setPalabras.remove(palabraEliminar)) {
+                System.out.println("La palabra " + palabraEliminar +
+                        " eliminada exitosamente.");
+            } else {
+                System.out.println("La palabra " + palabraEliminar +
+                        " no está en el diccionario.");
+            }
+        } else {
+            System.out.println("La palabra " + palabraEliminar +
+                    " no se encuentra almacenada en el diccionario.");
+        }
+
+    }
+
+    public void buscarPalabra(String palabraBuscar) {
+
+        Validador.validarPalabra(palabraBuscar);
+        String letra = Validador.palabraDividida(palabraBuscar);
+
+        if (this.diccionario.containsKey(letra)) {
+            Set<String> setPalabras = this.diccionario.get(letra);
+            if (setPalabras.contains(palabraBuscar)) {
+                System.out.println("La palabra " + palabraBuscar +
+                        ", está en el diccionario.");
+            } else {
+                System.out.println("La palabra " + palabraBuscar +
+                        ", no está en el diccionario.");
+            }
+        } else {
+            System.out.println("La palabra " + palabraBuscar +
+                    ", no está en el diccionario.");
+        }
+
+    }
+
+    public void mostrarInicialesDisponibles() {
+        boolean hayLetras = false;
+
+        System.out.println("Iniciales disponibles en el diccionario:");
+
+        for (String letra : diccionario.keySet()) {
+            Set<String> setPalabras = diccionario.get(letra);
+            if (setPalabras != null && !setPalabras.isEmpty()) {
+                System.out.println(letra);
+                hayLetras = true;
+            }
+        }
+
+        if (!hayLetras) {
+            System.out.println("No hay iniciales disponibles en el diccionario.");
+        }
+
+    }
+
+    public void mostrarPalabrasPorInicial(String inicial) {
+
+        String letra = inicial.toLowerCase();
+        Set<String> setPalabras = diccionario.get(letra);
+
+        try {
+            if (!setPalabras.isEmpty()) {
+                System.out.println("Las palabras que comienzan con la inicial " + inicial + " son:");
+                for (String palabra : setPalabras) {
+                    System.out.println(palabra);
+                }
+            } else {
+                System.out.println("No hay palabras almacenadas que comiencen con la inicial " + inicial);
+            }
+        } catch (NullPointerException e) {
+            System.out.println("La inicial " + inicial + " no existe en el diccionario.");
+        }
+
+    }
+}
